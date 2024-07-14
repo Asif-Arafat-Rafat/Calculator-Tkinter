@@ -1,11 +1,15 @@
 from tkinter import Entry,Button,StringVar,X,font,LEFT
 def calculator_layout(root):
     root.title('new')
-    root.geometry("370x500")
+    root.geometry("380x500")
     root.resizable(0,0)
     root.config(bg="black")
-    entry=Entry(root,bg="#303030",font=font.Font(size=50))
-    entry.grid(row=0,columnspan=60,sticky="ew", padx=0, pady=10)  # Fill the width of the parent
+    root.columnconfigure(0,weight=1)
+    root.columnconfigure(1,weight=1)
+    root.columnconfigure(2,weight=1)
+    root.columnconfigure(3,weight=1)
+    entry=Entry(root,bg="#303030",fg="white",font=font.Font(size=50))
+    entry.grid(row=0,columnspan=4,sticky="ew", padx=10, pady=10)  # Fill the width of the parent
     button1=Button(root,text="1",bg="#303030",fg="white",font=font.Font(size=30),padx=10)
     button2=Button(root,text="2",bg="#303030",fg="white",font=font.Font(size=30),padx=10)
     button3=Button(root,text="3",bg="#303030",fg="white",font=font.Font(size=30),padx=10)
@@ -15,14 +19,16 @@ def calculator_layout(root):
     button7=Button(root,text="7",bg="#303030",fg="white",font=font.Font(size=30),padx=10)
     button8=Button(root,text="8",bg="#303030",fg="white",font=font.Font(size=30),padx=10)
     button9=Button(root,text="9",bg="#303030",fg="white",font=font.Font(size=30),padx=10)
-    button0=Button(root,text="0",bg="#303030",fg="white",font=font.Font(size=30),padx=55)
+    button0=Button(root,text="0",bg="#303030",fg="white",font=font.Font(size=30),padx=10)
+    buttonC=Button(root,text="C",bg="#303030",fg="white",font=font.Font(size=30),padx=10)
     buttoneq=Button(root,text="=",bg="#303030",fg="white",font=font.Font(size=30),padx=10)
     buttonpl=Button(root,text="+",bg="#303030",fg="white",font=font.Font(size=30),padx=10)
     buttonmu=Button(root,text="-",bg="#303030",fg="white",font=font.Font(size=30),padx=15)
     buttonml=Button(root,text="/",bg="#303030",fg="white",font=font.Font(size=30),padx=18)
     buttondv=Button(root,text="X",bg="#303030",fg="white",font=font.Font(size=30),padx=10)
-    button1.grid(row=1,column=0,padx=5,pady=10)
-    button2.grid(row=1,column=1,padx=5,pady=10)
+
+    button1.grid(row=1,column=0,sticky="ew",padx=10,pady=10)
+    button2.grid(row=1,column=1,sticky="nswe",padx=10,pady=10)
     button3.grid(row=1,column=2,padx=5,pady=10)
     buttonpl.grid(row=1,column=3,padx=5,pady=10)
     button4.grid(row=2,column=0,padx=5,pady=10)
@@ -33,7 +39,8 @@ def calculator_layout(root):
     button8.grid(row=3,column=1,padx=5,pady=10)
     button9.grid(row=3,column=2,padx=5,pady=10)
     buttonml.grid(row=3,column=3,padx=5,pady=10)
-    button0.grid(row=4,column=0,columnspan=2,padx=5,pady=10)
+    button0.grid(row=4,column=1,padx=5,pady=10)
+    buttonC.grid(row=4,column=0,padx=5,pady=10)
     buttoneq.grid(row=4,column=2,padx=5,pady=10)
     buttondv.grid(row=4,column=3,padx=5,pady=10)
 
