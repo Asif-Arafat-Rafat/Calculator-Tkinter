@@ -1,4 +1,13 @@
-from tkinter import Entry,Button,StringVar,X,font,LEFT
+from tkinter import Entry,Button,X,font,LEFT,END
+def calculate(entry):
+    try:
+        result=eval(entry.get())
+        entry.delete(0,END)
+        entry.insert(0,result)
+    except:
+        entry.delete(0,END)
+        entry.insert(0,"ERROR")
+        
 def calculator_layout(root):
     root.title('new')
     root.geometry("380x500")
@@ -9,24 +18,23 @@ def calculator_layout(root):
     root.columnconfigure(2,weight=1)
     root.columnconfigure(3,weight=1)
     entry=Entry(root,bg="#303030",fg="white",font=font.Font(size=50))
-    entry.grid(row=0,columnspan=4,sticky="ew", padx=10, pady=10)  # Fill the width of the parent
-    button1=Button(root,text="1",bg="#303030",fg="white",font=font.Font(size=30),padx=10)
-    button2=Button(root,text="2",bg="#303030",fg="white",font=font.Font(size=30),padx=10)
-    button3=Button(root,text="3",bg="#303030",fg="white",font=font.Font(size=30),padx=10)
-    button4=Button(root,text="4",bg="#303030",fg="white",font=font.Font(size=30),padx=10)
-    button5=Button(root,text="5",bg="#303030",fg="white",font=font.Font(size=30),padx=10)
-    button6=Button(root,text="6",bg="#303030",fg="white",font=font.Font(size=30),padx=10)
-    button7=Button(root,text="7",bg="#303030",fg="white",font=font.Font(size=30),padx=10)
-    button8=Button(root,text="8",bg="#303030",fg="white",font=font.Font(size=30),padx=10)
-    button9=Button(root,text="9",bg="#303030",fg="white",font=font.Font(size=30),padx=10)
-    button0=Button(root,text="0",bg="#303030",fg="white",font=font.Font(size=30),padx=10)
-    buttonC=Button(root,text="C",bg="#303030",fg="white",font=font.Font(size=30),padx=10)
-    buttoneq=Button(root,text="=",bg="#303030",fg="white",font=font.Font(size=30),padx=10)
-    buttonpl=Button(root,text="+",bg="#303030",fg="white",font=font.Font(size=30),padx=10)
-    buttonmu=Button(root,text="-",bg="#303030",fg="white",font=font.Font(size=30),padx=15)
-    buttonml=Button(root,text="/",bg="#303030",fg="white",font=font.Font(size=30),padx=18)
-    buttondv=Button(root,text="X",bg="#303030",fg="white",font=font.Font(size=30),padx=10)
-
+    entry.grid(row=0,columnspan=4,sticky="ew", padx=10, pady=10)
+    button1=Button(root,text="1",bg="#303030",fg="white",font=font.Font(size=30),padx=10,command=lambda:add(entry,1))
+    button2=Button(root,text="2",bg="#303030",fg="white",font=font.Font(size=30),padx=10,command=lambda:add(entry,2))
+    button3=Button(root,text="3",bg="#303030",fg="white",font=font.Font(size=30),padx=10,command=lambda:add(entry,3))
+    button4=Button(root,text="4",bg="#303030",fg="white",font=font.Font(size=30),padx=10,command=lambda:add(entry,4))
+    button5=Button(root,text="5",bg="#303030",fg="white",font=font.Font(size=30),padx=10,command=lambda:add(entry,5))
+    button6=Button(root,text="6",bg="#303030",fg="white",font=font.Font(size=30),padx=10,command=lambda:add(entry,6))
+    button7=Button(root,text="7",bg="#303030",fg="white",font=font.Font(size=30),padx=10,command=lambda:add(entry,7))
+    button8=Button(root,text="8",bg="#303030",fg="white",font=font.Font(size=30),padx=10,command=lambda:add(entry,8))
+    button9=Button(root,text="9",bg="#303030",fg="white",font=font.Font(size=30),padx=10,command=lambda:add(entry,9))
+    button0=Button(root,text="0",bg="#303030",fg="white",font=font.Font(size=30),padx=10,command=lambda:add(entry,0))
+    buttonC=Button(root,text="C",bg="orange",fg="white",font=font.Font(size=30),padx=10,command=lambda:entry.delete(len(entry.get())-1,END))
+    buttoneq=Button(root,text="=",bg="orange",fg="white",font=font.Font(size=30),padx=10,command=lambda:calculate(entry))
+    buttonpl=Button(root,text="+",bg="cyan",fg="grey",font=font.Font(size=30),padx=10,command=lambda:add(entry,'+'))
+    buttonmu=Button(root,text="-",bg="cyan",fg="grey",font=font.Font(size=30),padx=15,command=lambda:add(entry,'-'))
+    buttonml=Button(root,text="X",bg="cyan",fg="grey",font=font.Font(size=30),padx=10,command=lambda:add(entry,'*'))
+    buttondv=Button(root,text="/",bg="cyan",fg="grey",font=font.Font(size=30),padx=18,command=lambda:add(entry,'/'))
     button1.grid(row=1,column=0,sticky="ew",padx=10,pady=10)
     button2.grid(row=1,column=1,sticky="nswe",padx=10,pady=10)
     button3.grid(row=1,column=2,padx=5,pady=10)
@@ -43,5 +51,5 @@ def calculator_layout(root):
     buttonC.grid(row=4,column=0,padx=5,pady=10)
     buttoneq.grid(row=4,column=2,padx=5,pady=10)
     buttondv.grid(row=4,column=3,padx=5,pady=10)
-
-
+def add(entry,num):
+    entry.insert(END,num)
